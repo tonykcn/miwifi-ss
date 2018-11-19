@@ -61,10 +61,10 @@ cp -f /etc/firewall.user /etc/firewall.user.back
 echo "ipset -N gfwlist iphash -! " >> /etc/firewall.user
 echo "iptables -t nat -A PREROUTING -p tcp -m set --match-set gfwlist dst -j REDIRECT --to-port 1081" >> /etc/firewall.user
 
-#ipset -N gfwlist iphash -!
-#iptables -t nat -A PREROUTING -p tcp -s 192.168.31.213 -j REDIRECT --to-port 1081
-#iptables -t nat -A PREROUTING -p tcp -s 192.168.31.200 -m set --match-set gfwlist dst -j REDIRECT --to-port 1081
-#iptables -t nat -A PREROUTING -s 192.168.31.1/24 -p udp --dport 53 -j DNAT --to 192.168.31.1
+ipset -N gfwlist iphash -!
+iptables -t nat -A PREROUTING -p tcp -s 192.168.31.213 -j REDIRECT --to-port 1081
+iptables -t nat -A PREROUTING -p tcp -s 192.168.31.200 -m set --match-set gfwlist dst -j REDIRECT --to-port 1081
+iptables -t nat -A PREROUTING -s 192.168.31.1/24 -p udp --dport 53 -j DNAT --to 192.168.31.1
 
 
 #restart all service
